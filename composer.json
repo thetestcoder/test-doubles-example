@@ -1,0 +1,31 @@
+{
+  "name": "thetestcoder/test-doubles",
+  "description": "this is simple test doubles",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Thetestcoder\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "The Test Coder",
+      "email": "thetestcoder@gmail.com"
+    }
+  ],
+  "scripts": {
+    "pf": "./vendor/bin/phpunit --filter ",
+    "test": "./vendor/bin/phpunit"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.2"
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^7.7"
+  }
+}

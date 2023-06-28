@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
@@ -9,6 +10,7 @@ use Thetestcoder\Services\WeatherInterface;
 use Thetestcoder\Services\WebhookInterface;
 use Thetestcoder\WeatherAPIConsumer;
 
+#[CoversClass(WeatherAPIConsumer::class)]
 class WeatherAPIConsumerTest extends TestCase
 {
     public ?WeatherInterface $weatherStub;
@@ -26,6 +28,19 @@ class WeatherAPIConsumerTest extends TestCase
         $weatherAPIConsumer = new WeatherAPIConsumer($this->weatherStub, $this->webhookMock);
 
         $this->assertEquals(-73.15, $weatherAPIConsumer->getCelsius());
+    }
+
+    public function test_it_expect_an_exception_if_temp_is_invalid()
+    {
+
+        $this->weatherStub->method('getCurrentTemperature')
+            ->willReturn("test");
+
+        $weatherAPIConsumer = new WeatherAPIConsumer($this->weatherStub, $this->webhookMock);
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $celsius = $weatherAPIConsumer->getCelsius();
     }
 
     public function test_it_should_be_called_once_when_get_the_celsius_data()

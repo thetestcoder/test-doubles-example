@@ -1,3 +1,11 @@
 vendor
 .idea
 .phpunit.result.cache
+html-coverage
+clover.xml
+coverage.php
+coverage.txt
+crap4j.xml
+cobertura.xml
+xml-coverage
+.phpunit.cache

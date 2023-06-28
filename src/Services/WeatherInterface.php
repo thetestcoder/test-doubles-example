@@ -4,5 +4,5 @@ namespace Thetestcoder\Services;
 
 interface WeatherInterface
 {
-    public function getCurrentTemperature(): float|int;
+    public function getCurrentTemperature();
 }
